@@ -1,0 +1,25 @@
+#cover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+  background-color: #0a0a6380;
+}
+
+.pho {
+  border-radius: 50%;
+  overflow: hidden;
+  transform: translateY(-20px);
+}
+
+.actions span {
+  text-align: center;
+  font-size: 18px;
+}
+.actions span p {
+    font-weight: bold;
+}
+.actions span h5 {
+}

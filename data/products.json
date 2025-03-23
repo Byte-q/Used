@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "description": "High-performance laptop",
+    "price": 1000,
+    "image": "/labtop.jpg",
+    "stock": 5
+  },
+  {
+    "id": 2,
+    "name": "Camera",
+    "description": "High-performance Camera",
+    "price": 700,
+    "image": "/zoom.jpg",
+    "stock": 30
+  },
+  {
+    "id": 4,
+    "name": "Laptop",
+    "description": "Very Good",
+    "price": 1050,
+    "image": "/labtop.jpg",
+    "stock": 7
+  },
+  {
+    "id": 5,
+    "name": "Camera",
+    "description": "Soo Good",
+    "price": 30,
+    "image": "/camera.jpg",
+    "stock": 5
+  },
+  {
+    "id": 6,
+    "name": "Iphone",
+    "description": "cellphone",
+    "price": 1500,
+    "image": "/iphone.jpg",
+    "stock": 3
+  }
+]
