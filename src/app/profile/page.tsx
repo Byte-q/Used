@@ -6,6 +6,7 @@ import UserInfo from "./UserInfo";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { useRouter } from "next/navigation";
+import { LogOut } from "lucide-react";
 
 
 const Page = () => {
@@ -84,7 +85,7 @@ if (loading) {
             <Button name="Dashboard" path="/Dashboard" />
           </span>
           <div className="info w-fit flex justify-center items-center gap-5">
-              <Button icon="logOut" onClick={handleLogout} />
+              <LogOut onClick={handleLogout} />
           </div>
         </header>
         <Image src={user.coverImage || "/profile.png"} alt="none" fill className="z-0" />
