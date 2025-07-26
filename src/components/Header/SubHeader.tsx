@@ -1,8 +1,7 @@
 'use client'
 import React, { useState, useRef, useEffect } from "react";
 import './SubHeader.css'
-import { faList } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { List } from 'lucide-react';
 import Link from "next/link";
 
 const SubHeader = () => {
@@ -26,8 +25,7 @@ const SubHeader = () => {
     }, []);
       return (
         <div className="link-cont h-10 header2 flex items-center pt-0 pb-0 pl-3 pr-3" ref={dropdownRef}>
-          <FontAwesomeIcon
-            icon={faList}
+          <List
             size="lg"
             className="icon text-white"
             onClick={() => setIsOpen(!isOpen)}

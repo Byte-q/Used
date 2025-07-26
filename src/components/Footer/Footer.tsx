@@ -1,8 +1,7 @@
 'use client'
 import React from "react";
 import "./Footer.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faLock, faContactCard } from "@fortawesome/free-solid-svg-icons";
+import { Lock, Phone, Contact } from 'lucide-react'
 import Link from "next/link";
 
 const Footer = () => {
@@ -11,13 +10,13 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-links">
             <Link href="#">
-              <FontAwesomeIcon icon={faContactCard} /> About Us
+              <Contact /> About Us
             </Link>
             <Link href="#">
-              <FontAwesomeIcon icon={faLock} /> Praivcy Policy
+              <Lock /> Praivcy Policy
             </Link>
             <Link href="#">
-              <FontAwesomeIcon icon={faPhone} /> Contact Us
+              <Phone /> Contact Us
             </Link>
           </div>
           <p>All Right Recived © {new Date().getFullYear()}</p>

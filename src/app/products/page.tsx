@@ -5,11 +5,11 @@ import "./product.css";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 interface Product {
-  id: number;
-  name: string;
+  _id: number;
+  title: string;
   description: string;
   price: number;
-  image: string;
+  imageUrl: string;
   stock: number;
 }
 
@@ -21,8 +21,10 @@ const [loading, setLoading] = useState(true);
 
 
 useEffect(() => {
-  fetch("/api/products")
+  const API_BASE_URL = process.env.API_BASE_URL;
+  fetch(`${API_BASE_URL}/products`)
   .then((res) => res.json())
+  .then((data) => data.data || [])
   .then((data) => {
     if (Array.isArray(data)) {
         setProducts(data); // If the response is an array
@@ -60,12 +62,12 @@ useEffect(() => {
           {products.length > 0 ? (
             products.map((Product) => (
               <ProdCard
-              id={Product.id}
-              key={Product.id}
-              title={Product.name}
+              id={Product._id}
+              key={Product._id}
+              title={Product.title}
               desc={Product.description}
                 price={Product.price}
-                src={Product.image}
+                src={Product.imageUrl || "/placeholder.png"}
               />
             ))
           ) : (

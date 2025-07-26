@@ -1,7 +1,5 @@
 "use client";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import "./profile.css";
 import Button from "../../components/Button";
 import UserInfo from "./UserInfo";
@@ -13,7 +11,9 @@ import { useRouter } from "next/navigation";
 const Page = () => {
   interface User {
     email: string;
-    name: string;
+    username: string;
+    imageUrl: string;
+    coverImage: string;
   }
 
   const router = useRouter();
@@ -23,20 +23,22 @@ const Page = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const userEmail = localStorage.getItem("userEmail");
-      if (!userEmail) {
+      const userId = localStorage.getItem("userId");
+      if (!userId) {
         setLoading(false);
         return;
       }
 
       try {
-        const res = await fetch(`/api/user?email=${userEmail}`);
-        const data = await res.json();
+        const API_BASE_URL = process.env.API_BASE_URL;
+        const res = await fetch(`${API_BASE_URL}/users/${userId}`);
+        const allData = await res.json();
+        const data = allData.data;
 
         if (res.ok) {
           setUser(data);
         } else {
-          console.error("Error fetching user:", data.error);
+          console.error("Error fetching user:", allData.error);
         }
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -48,7 +50,7 @@ const Page = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("userEmail"); // Clear user session
+    localStorage.removeItem("userId"); // Clear user session
     router.push("/signup"); // Redirect to login page
   };
 
@@ -81,29 +83,13 @@ if (loading) {
             <Button name="Dashboard" path="/Dashboard" />
           </span>
           <div className="info w-fit flex justify-center items-center gap-5">
-            <span className="flex gap-4 hidden md:flex items-center">
-              <Image
-                className="rounded-full"
-                src={"/profile.png"}
-                alt="none"
-                width={40}
-                height={40}
-              />
-              <span className="name text-sky-500 font-bold">{user.name}</span>
-            </span>
-            <button
-              onClick={handleLogout}
-              className="w-fit  bg-rose-400 text-white p-2 rounded hover:bg-red-700"
-            >
-              <FontAwesomeIcon icon={faSignOut} />{" "}
-              <span className="hidden md:inline-block">Log Out</span>
-            </button>
+              <Button icon="logOut" onClick={handleLogout} />
           </div>
         </header>
-        <Image src={"/profile.png"} alt="none" fill className="z-0" />
+        <Image src={user.coverImage || "/profile.png"} alt="none" fill className="z-0" />
         <div className="des z-2 relative transform translate-y-15 p-10">
           <h3 className="text-sky-400 font-bold text-3xl text-center md:text-start">
-            Welcome, {user.name}
+            Welcome, {user.username}
           </h3>
           <p className="text-white text-center md:text-start text-lg">
             This is your profile page, you can view and edit you personal
@@ -116,7 +102,7 @@ if (loading) {
           <div className="photo w-full h-[50%] flex flex-row gap-2 justify-center items-center pr-5 pl-5">
             <Button name="Connect" />
             <span className="pho w-[120px] h-[120px] flow relative">
-              <Image src={"/profile.png"} alt="none" fill />
+              <Image src={user.imageUrl || "/profile.png"} alt="none" fill />
             </span>
             <Button name="Message" />
           </div>
@@ -142,7 +128,7 @@ if (loading) {
           <section className="userInfo bg-gray-100 p-5">
             <div className="header">USER INFORMATION</div>
             <div className="content grid grid-flow-col grid-rows-2 gap-5">
-              <UserInfo title="User Name" val={user.name} />
+              <UserInfo title="User Name" val={user.username} />
               <UserInfo title="email" val={user.email} />
               {/* <UserInfo title="First Name" val={items.firstName} />
               <UserInfo title="Last Name" val={items.lastName} /> */}

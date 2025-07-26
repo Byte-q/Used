@@ -6,14 +6,13 @@ import Image from "next/image";
 import Search from "../Search";
 import Button from "../Button";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../LoadingSpinner";
 
 const Header = () => {
   interface User {
     email: string;
-    name: string;
+    username: string;
+    imageUrl: string;
   }
 
   const [user, setUser] = useState<User | null>(null);
@@ -21,15 +20,17 @@ const Header = () => {
 
 useEffect(() => {
   const fetchUserData = async () => {
-    const userEmail = localStorage.getItem("userEmail");
-    if (!userEmail) {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
       setLoading(false);
       return;
     }
 
     try {
-      const res = await fetch(`/api/user?email=${userEmail}`);
-      const data = await res.json();
+      const API_BASE_URL = process.env.API_BASE_URL;
+      const res = await fetch(`${API_BASE_URL}/users/${userId}`);
+      const allData = await res.json();
+      const data = allData.data;
 
       if (res.ok) {
         setUser(data);
@@ -52,7 +53,7 @@ useEffect(() => {
           <div className="logo flex h-full items-center gap-2 text-2xl font-bold">
             <Image
               className="hidden md:block"
-              src="/images/logo.png"
+              src="/logo.png"
               alt="none"
               width={50}
               height={50}
@@ -62,7 +63,7 @@ useEffect(() => {
         </Link>
         <div className="search h-full w-35 md:w-60 flex items-center gap-2">
           <Search />
-          <FontAwesomeIcon className="text-lg cursor-pointer" icon={faSearch} />
+          <search />
         </div>
         {!loading ? <div className="sing flex gap-5">
           <div className="profile flex items-center gap-4">
@@ -78,7 +79,7 @@ useEffect(() => {
             {user ? <Link href={"/profile"}>
               <Image
                 className="rounded-full"
-                src="/profile.png"
+                src={user.imageUrl || "/profile.png"}
                 alt="none"
                 width={40}
                 height={40}
