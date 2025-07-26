@@ -27,10 +27,11 @@ export default function AdminDashboard() {
   useEffect(() => {
     fetchProducts();
   }, []);
+  
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const fetchProducts = async () => {
     try {
-      const API_BASE_URL = process.env.API_BASE_URL;
       const res = await fetch(`${API_BASE_URL}/products`);
       if (!res.ok) {
         console.error("Error fetching products:", res.statusText);
@@ -68,7 +69,7 @@ export default function AdminDashboard() {
     }
 
     try {
-      const res = await fetch("http://localhost:3500/server/api/products", {
+      const res = await fetch(`${API_BASE_URL}/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -104,7 +105,7 @@ export default function AdminDashboard() {
     if (!confirm("Are you sure you want to delete this product?")) return;
 
     try {
-      const res = await fetch(`http://localhost:3500/server/api/products/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/products/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),

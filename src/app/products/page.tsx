@@ -18,10 +18,10 @@ const Page = () => {
 const [products, setProducts] = useState<Product[]>([]);
 const [loading, setLoading] = useState(true);
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 
 useEffect(() => {
-  const API_BASE_URL = process.env.API_BASE_URL;
   fetch(`${API_BASE_URL}/products`)
   .then((res) => res.json())
   .then((data) => data.data || [])

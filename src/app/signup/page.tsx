@@ -12,7 +12,9 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
+  
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+  
   const handleSignup = async () => {
     setError("");
     setSuccess("");
@@ -23,7 +25,6 @@ export default function SignupPage() {
     }
 
     try {
-      const API_BASE_URL = process.env.API_BASE_URL;
       const res = await fetch(`${API_BASE_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

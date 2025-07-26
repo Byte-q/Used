@@ -8,6 +8,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const handleLogin = async () => {
     setError("");
 
@@ -17,7 +19,6 @@ export default function LoginPage() {
     }
 
     try {
-      const API_BASE_URL = process.env.API_BASE_URL;
       const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

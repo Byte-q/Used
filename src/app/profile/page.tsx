@@ -21,6 +21,8 @@ const Page = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+  
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
@@ -30,7 +32,6 @@ const Page = () => {
       }
 
       try {
-        const API_BASE_URL = process.env.API_BASE_URL;
         const res = await fetch(`${API_BASE_URL}/users/${userId}`);
         const allData = await res.json();
         const data = allData.data;
