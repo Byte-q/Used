@@ -2,10 +2,12 @@ import React from "react";
 import Button from "../Button";
 import Image from "next/image";
 import Motion from "../Motion";
+import SearchForm from "../Search";
 
 const Landing = () => {
   return (
-    <section className="container mt-10 md:m-auto flex flex-col md:flex-row justify-center align-center h-fit md:h-200 text-center p-3">
+    <section className="h-fit">
+      <div className="flex container mt-10 md:m-auto md:flex-row justify-center align-center h-fit md:h-200 text-center p-3">
       <div className="text w-full md:w-[50%] flex flex-col justify-center text-center md:text-start pr-5 pl-5 m-auto md:m-0">
         <Motion dim="y">
           <h1 className="c-sky-400 font-bold text-3xl mb-3 text-sky-600">
@@ -29,6 +31,10 @@ const Landing = () => {
           <Image src="/landing.png" alt="none" width={400} height={400} />
         </div>
       </Motion>
+      </div>
+      {/* <div className="p-8"> */}
+        {/* <SearchForm className="w-[60%]" /> */}
+      {/* </div> */}
     </section>
   );
 };

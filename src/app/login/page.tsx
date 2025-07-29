@@ -34,6 +34,7 @@ export default function LoginPage() {
 
       // Store user email in localStorage
       localStorage.setItem("userId", data._id);
+      // sessionStorage.setItem("user", data);
       alert("✅ Login successful!");
       router.push("/profile"); // Redirect to profile page
     } catch (error) {

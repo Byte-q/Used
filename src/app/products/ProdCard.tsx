@@ -2,6 +2,8 @@
 import Image from "next/image";
 import ProdBtn from "./ProdBtn";
 import { useCart } from "../context/CartContext";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 const ProdCard = (Items: {
   id: number;
@@ -14,7 +16,7 @@ const ProdCard = (Items: {
   const { addToCart } = useCart();
 
   return (
-    <div className="w-50 h-[350px] flex flex-col justify-between h-95 bg-white rounded shadow shadow-white-950 p-2 transform hover:translate-y-5 cursor-pointer duration-300">
+    <div className="w-50 h-[350px] flex flex-col justify-between h-95 border-1 rounded shadow shadow-white-950 p-2 cursor-pointer duration-300">
       <div className="img w-[full] h-[35%] relative">
         <Image className="rounded object-cover" src={Items.src} alt="none" fill />
       </div>
@@ -24,7 +26,7 @@ const ProdCard = (Items: {
         <p className="pt-2 text-green-500 font-bold "> ${Items.price} </p>
       </div>
       <div className="btn text-center flex gap-3 items-center justify-center">
-        <ProdBtn name="add to cart" onClick={() => addToCart({ ...Items, id: Items.id.toString(), name: Items.title, image: Items.src })} />
+        <Button variant={'ghost'} onClick={() => addToCart({ ...Items, id: Items.id.toString(), name: Items.title, image: Items.src })}>Add to cart <Plus/></Button>
       </div>
     </div>
   );

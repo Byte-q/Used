@@ -6,7 +6,7 @@ const UserInfo = ({title, val}: {title: string; val: string}) => {
     <div className="userName">
       <div className="">{title}</div>
       <input
-        className="outline-none bg-white h-[40px] p-2 rounded-lg shadow shadow-white-500 w-[90%] text-sm "
+        className="outline-none h-[40px] p-2 rounded-lg shadow shadow-white-500 w-[90%] text-sm "
         type="text"
         placeholder={`${val}`}
       />

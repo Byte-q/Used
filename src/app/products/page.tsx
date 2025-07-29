@@ -39,12 +39,12 @@ useEffect(() => {
 }, []);
   
   return (
-    <div className="bg-gray-100">
+    <div className="">
       <div className="til h-20 p-5 text-xl md:text-3xl text-sky-400 font-bold">
         Welcome To Products Area,
       </div>
       <div className="min-h-[100vb] flex">
-        <section className="sidebar w-[40%] md:w-[15%] h-[full] bg-white shadow shadow-white-950 p-5">
+        <section className="sidebar w-[40%] md:w-[15%] h-[full] border-1 p-5">
           <h3 className="text-lg text-sky-500 font-bold ">
             Supplayers Countries
           </h3>
@@ -58,7 +58,7 @@ useEffect(() => {
           <h3 className=""></h3>
         </section>
         { !loading ?
-          <section className="products w-[85%] max-h-[100vb] bg-transparent p-5 grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 overflow-y-scroll">
+          <section className="products w-[85%] max-h-[100vb] p-5 grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 overflow-y-scroll">
           {products.length > 0 ? (
             products.map((Product) => (
               <ProdCard

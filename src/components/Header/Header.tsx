@@ -7,6 +7,7 @@ import Search from "../Search";
 import Button from "../Button";
 import Link from "next/link";
 import LoadingSpinner from "../LoadingSpinner";
+import { ModeToggle } from "../modeToggle";
 
 const Header = () => {
   interface User {
@@ -36,7 +37,7 @@ useEffect(() => {
       if (res.ok) {
         setUser(data);
       } else {
-        console.error("Error fetching user:", data.error);
+        console.error("Error fetching user:", allData.error);
       }
     } catch (error) {
       console.error("Error fetching user:", error);
@@ -48,24 +49,8 @@ useEffect(() => {
 }, []);
 
   return (
-    <main>
+    <main className="">
       <div className="header1 p-5 h-25 flex justify-between text-white">
-        <Link href={"/"}>
-          <div className="logo flex h-full items-center gap-2 text-2xl font-bold">
-            <Image
-              className="hidden md:block"
-              src="/logo.png"
-              alt="none"
-              width={50}
-              height={50}
-            />
-            Used
-          </div>
-        </Link>
-        <div className="search h-full w-35 md:w-60 flex items-center gap-2">
-          <Search />
-          <search />
-        </div>
         {!loading ? <div className="sing flex gap-5">
           <div className="profile flex items-center gap-4">
             {user ? <Link href={"/cart"}>
@@ -92,6 +77,25 @@ useEffect(() => {
             }
           </div>
         </div> : <LoadingSpinner />}
+            {/* <div className="search h-full w-50 md:w-60 flex items-center gap-2 h-20">
+              <Search className="h-20" />
+              <search />
+            </div> */}
+        <Link href={"/"}>
+          <div className="logo flex h-full items-center gap-2 text-2xl font-bold">
+            <span>
+            <ModeToggle />
+            </span>
+            Used
+            <Image
+              className="hidden md:block"
+              src="/logo.png"
+              alt="none"
+              width={50}
+              height={50}
+              />
+          </div>
+        </Link>
       </div>
       <SubHeader />
     </main>

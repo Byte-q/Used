@@ -24,10 +24,10 @@ const SubHeader = () => {
       };
     }, []);
       return (
-        <div className="link-cont h-10 header2 flex items-center pt-0 pb-0 pl-3 pr-3" ref={dropdownRef}>
+        <div className="link-cont h-10 header2 flex justify-start pt-0 pb-0 pl-3 pr-3" ref={dropdownRef}>
           <List
             size="lg"
-            className="icon text-white"
+            className="block md:hidden text-white"
             onClick={() => setIsOpen(!isOpen)}
           />
           <ul

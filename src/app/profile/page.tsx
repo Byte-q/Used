@@ -77,12 +77,12 @@ if (loading) {
     <div className="h-[150vb] lg:h-[100vb] w-full flex flex-col">
       <section
         id="cover"
-        className="cover bg-rose-400 h-[30%] lg:h-[70%] w-full relative"
+        className="cover h-[30%] lg:h-[70%] w-full relative"
       >
         <header className="flex justify-between p-5 h-20 bg-transparent z-2 relative">
           <span className="flex gap-5">
             <Button name="Home" path="/" />
-            <Button name="Dashboard" path="/Dashboard" />
+            <Button name="Dashboard" path="/admin" />
           </span>
           <div className="info w-fit flex justify-center items-center gap-5">
               <LogOut onClick={handleLogout} />
@@ -100,7 +100,7 @@ if (loading) {
         </div>
       </section>
       <section className="details h-[70%] lg:h-[20%] w-full flex flex-col lg:flex-row gap-5 relative">
-        <div className="act bg-white w-full lg:w-[30%] h-[270px] lg:absolute bottom-0 right-5 shadow shadow-gray-500 rounded z-2">
+        <div className="act dark:bg-gray-900 w-full lg:w-[30%] h-[270px] lg:absolute bottom-0 right-5 border-1 rounded z-2">
           <div className="photo w-full h-[50%] flex flex-row gap-2 justify-center items-center pr-5 pl-5">
             <Button name="Connect" />
             <span className="pho w-[120px] h-[120px] flow relative">
@@ -123,11 +123,11 @@ if (loading) {
             </span>
           </div>
         </div>
-        <div className="info bg-white w-full lg:w-[65%] min-h-[270px] lg:absolute lg:bottom-0 lg:left-5 shadow shadow-gray-500 rounded z-2">
-          <div className="cont h-[50px] bg-white p-5">
+        <div className="info dark:bg-gray-900 w-full lg:w-[65%] min-h-[270px] lg:absolute lg:bottom-0 lg:left-5 border-1 rounded z-2">
+          <div className="cont h-[50px] p-5">
             <h2 className="font-bold">My Account</h2>
           </div>
-          <section className="userInfo bg-gray-100 p-5">
+          <section className="userInf p-5">
             <div className="header">USER INFORMATION</div>
             <div className="content grid grid-flow-col grid-rows-2 gap-5">
               <UserInfo title="User Name" val={user.username} />

@@ -3,7 +3,7 @@ import React from "react";
 
 const Info = () => {
   return (
-    <section className="flex flex-col md:flex-row pt-10 pb-10 md:p-0 bg-gray-100 h-fit md:h-150">
+    <section className="flex flex-col md:flex-row pt-10 pb-10 md:p-0 bg-gray-100 dark:bg-gray-700 h-fit md:h-150">
       <div className="image w-full md:w-[50%] flex items-center justify-center">
         <Image src="/user1.png" alt="none" width={200} height={200} />
       </div>
