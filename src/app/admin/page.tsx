@@ -7,44 +7,15 @@ import {
   Users,
   Award,
   FileText,
-  Book,
   Search,
   Archive,
   TrendingUp,
   MessageSquare,
   Calendar,
-  Clock,
   AlertTriangle
 } from 'lucide-react';
 // import { apiGet } from '@/lib/api';
 
-// نموذج لبيانات الإحصائيات
-interface StatsData {
-  totalproducts: number;
-  totalUsers: number;
-  totalPosts: number;
-  totalSuccessStories: number;
-  recentproducts: Array<{
-    id: number;
-    title: string;
-    slug: string;
-    createdAt: string;
-  }>;
-  recentMessages: Array<{
-    id: number;
-    name: string;
-    email: string;
-    subject: string;
-    createdAt: string;
-    isRead: boolean;
-  }>;
-  popularproducts: Array<{
-    id: number;
-    title: string;
-    slug: string;
-    viewCount: number;
-  }>;
-}
 
 export default function AdminDashboard() {
   const [products, setProducts] = useState([]);
