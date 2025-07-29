@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import "./Header.css";
 import SubHeader from "./SubHeader";
 import Image from "next/image";
-import Search from "../Search";
 import Button from "../Button";
 import Link from "next/link";
 import LoadingSpinner from "../LoadingSpinner";
@@ -77,10 +76,6 @@ useEffect(() => {
             }
           </div>
         </div> : <LoadingSpinner />}
-            {/* <div className="search h-full w-50 md:w-60 flex items-center gap-2 h-20">
-              <Search className="h-20" />
-              <search />
-            </div> */}
         <Link href={"/"}>
           <div className="logo flex h-full items-center gap-2 text-2xl font-bold">
             <span>
