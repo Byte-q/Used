@@ -3,7 +3,7 @@
 import { useState, FormEvent, ChangeEvent, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import { Search, X, Loader2, ArrowRight, AlertCircle, History } from 'lucide-react';
+import { Search, X, Loader2, ArrowRight, History } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SearchFormProps {

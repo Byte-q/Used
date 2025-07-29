@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 /**
  * وظيفة آمنة للاستخدام مع Object.entries
  */
-export function safeObjectEntries(obj: any) {
+export function safeObjectEntries(obj: any): [string, any][] {
   if (!obj || typeof obj !== 'object') {
     console.warn('WARNING: Attempting to use Object.entries on non-object:', obj);
     return [];
@@ -19,7 +19,7 @@ export function safeObjectEntries(obj: any) {
 /**
  * وظيفة آمنة للاستخدام مع Array.reduce
  */
-export function safeReduce<T, U>(arr: any, callback: (acc: U, val: T, index: number, array: T[]) => U, initialValue: U): U {
+export function safeReduce<T, U>(arr: any[], callback: (acc: U, val: T, index: number, array: T[]) => U, initialValue: U): U {
   if (!Array.isArray(arr)) {
     console.warn('WARNING: Attempting to use Array.reduce on non-array:', arr);
     return initialValue;
@@ -72,7 +72,7 @@ export function formatDate(date: Date | string | null | undefined): string | nul
  * @param context - سياق التشخيص
  * @param data - البيانات المراد تتبعها
  */
-export function debug(context: string, data: any) {
+export function debug(context: string, data: any): void {
   console.log(`[DEBUG ${context}]:`, 
     typeof data === 'object' && data !== null 
       ? JSON.stringify(data, (key, value) => 

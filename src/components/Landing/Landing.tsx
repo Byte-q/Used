@@ -2,7 +2,6 @@ import React from "react";
 import Button from "../Button";
 import Image from "next/image";
 import Motion from "../Motion";
-import SearchForm from "../Search";
 
 const Landing = () => {
   return (
@@ -32,9 +31,6 @@ const Landing = () => {
         </div>
       </Motion>
       </div>
-      {/* <div className="p-8"> */}
-        {/* <SearchForm className="w-[60%]" /> */}
-      {/* </div> */}
     </section>
   );
 };
